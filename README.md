@@ -83,6 +83,10 @@ Once you approve the prompt, you choose how it executes:
 
 A subagent runs blind — no conversation, can't ask you mid-task — so Promptize holds it to a **higher bar**: it requires full ≥95% confidence and a self-sufficient brief, and at any unanticipated consequential fork it takes the safe/reversible option or defers that branch and flags it — never guessing, never blocking the run.
 
+## Every prompt is kept
+
+Promptize isn't a one-shot. Each prompt you approve is saved to a versioned library as a dated Markdown file (`~/.claude/prompts/YYYY-MM-DD-<slug>.md`) with metadata — date, execution mode, confidence at approval, status. Over time you build a greppable history of every structured intent you've run: reopen one, adapt it for a new case, and when the same prompt keeps recurring, promote it to a dedicated skill.
+
 ## Install
 
 Promptize is an [Agent Skill](https://agentskills.io) — a single `SKILL.md` (plus its docs) in the open Agent Skills format. It isn't tied to one tool: any host that supports the standard can run it, and the prompt it produces works in any LLM regardless of host.

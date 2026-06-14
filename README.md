@@ -95,29 +95,26 @@ Promptize isn't a one-shot. Each prompt you approve is saved to a versioned libr
 
 ## Install
 
-Promptize is an [Agent Skill](https://agentskills.io) — a `SKILL.md` in the open Agent Skills format. Two layers, two ways in:
+**Pick one — you don't need both.** Promptize installs either as a Claude Code plugin (easiest) or as a plain skill in any Agent Skills client.
 
-- **The skill is portable.** It runs in any Agent Skills-compatible client (Claude Code, Cursor, Copilot, Gemini CLI, …), and the prompt it produces is plain Markdown that works in any LLM.
-- **On Claude Code it also ships as a plugin** — one-step install with auto-updates, via the `netcopilot-labs` marketplace.
-
-**Claude Code — via the marketplace (recommended):**
+### Option A — Claude Code, via the marketplace *(recommended)*
 
 ```bash
 /plugin marketplace add netcopilot-labs/promptize
 /plugin install promptize@netcopilot-labs
 ```
 
-Then invoke it as `/promptize:promptize`. (Plugin skills are always namespaced — that's why it's `promptize:promptize`, not `/promptize`.)
+Invoke as `/promptize:promptize`. One command, with auto-updates. *(Plugin skills are always namespaced — that's why it's `promptize:promptize`, not `/promptize`.)*
 
-**Any Agent Skills client, or Claude Code standalone — copy the skill:**
+### Option B — any Agent Skills client, or Claude Code standalone
 
 ```bash
 git clone https://github.com/netcopilot-labs/promptize.git
 mkdir -p ~/.claude/skills/promptize
-cp promptize/SKILL.md ~/.claude/skills/promptize/   # Claude Code standalone → /promptize
+cp promptize/SKILL.md ~/.claude/skills/promptize/
 ```
 
-Drop `SKILL.md` into your client's skills directory (use that client's convention elsewhere). It's invoked explicitly and never activates on its own.
+Drop `SKILL.md` into your client's skills directory (shown for Claude Code; on Cursor, Copilot, Gemini CLI… use their convention). On Claude Code standalone it's invoked as `/promptize`. The prompt it produces is plain Markdown and works in any LLM.
 
 ## Usage
 

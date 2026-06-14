@@ -16,7 +16,7 @@ Promptize is one small, opinionated answer to that, built on a single principle:
 
 It applies that principle at four touchpoints:
 
-1. **Your intent** — it won't execute on a guess. It clarifies until it is ~95% sure it has your intent right.
+1. **Your intent** — it won't execute on a guess. It clarifies until it is ≥95% sure it has your intent right.
 2. **Your technical choices** — when a decision needs domain knowledge you may not have, it gives you grounded trade-offs and a marked, contestable recommendation, not a blank "what do you want?".
 3. **The agent's own forks** — if execution hits an unanticipated, consequential fork, it never guesses silently and never blocks an unattended run: in-session it asks; in auto/subagent mode it takes the safest reversible option (or defers that branch) and flags it in the final report.
 4. **The agent's "done"** — before calling the job finished, it checks the result against your success criteria instead of stopping early.
@@ -119,7 +119,7 @@ cp promptize/SKILL.md ~/.claude/skills/promptize/   # Claude Code standalone →
 Promptize will:
 
 1. parse the ask and show a field-by-field readiness check,
-2. clarify with you until confidence reaches ~95% (or you say *proceed*),
+2. clarify with you until confidence reaches ≥95% (or you say *proceed*),
 3. assemble the structured prompt for your approval,
 4. execute it in your chosen mode, saving the prompt to your library.
 

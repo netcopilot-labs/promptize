@@ -44,7 +44,7 @@ Constraints · Success criteria · Open assumptions · Examples
 
 You approve the prompt, choose how it runs (in your session, or in an isolated subagent), and Promptize executes it. Every approved prompt is saved to a versioned library for reuse.
 
-The prompt it produces is plain Markdown — **not tied to Claude.** Paste it into any LLM (ChatGPT, Gemini, a local model, anything) and it works the same: the tool runs in Claude Code, but its output goes anywhere.
+> **The prompt is the deliverable — and it's portable.** Plain Markdown, not tied to Claude: paste it into ChatGPT, Gemini, a local model, anything. The tool runs in Claude Code; its output goes anywhere.
 
 ## Example
 
@@ -95,26 +95,24 @@ Promptize isn't a one-shot. Each prompt you approve is saved to a versioned libr
 
 ## Install
 
-**Pick one — you don't need both.** Promptize installs either as a Claude Code plugin (easiest) or as a plain skill in any Agent Skills client.
+**Pick one — you don't need both.**
 
-### Option A — Claude Code, via the marketplace *(recommended)*
+**A · Claude Code** *(recommended)* — via the marketplace:
 
 ```bash
 /plugin marketplace add netcopilot-labs/promptize
 /plugin install promptize@netcopilot-labs
 ```
 
-Invoke as `/promptize:promptize`. One command, with auto-updates. *(Plugin skills are always namespaced — that's why it's `promptize:promptize`, not `/promptize`.)*
+Invoke as `/promptize:promptize`.
 
-### Option B — any Agent Skills client, or Claude Code standalone
+**B · Any other Agent Skills client** — copy the skill into its skills directory:
 
 ```bash
 git clone https://github.com/netcopilot-labs/promptize.git
 mkdir -p ~/.claude/skills/promptize
-cp promptize/SKILL.md ~/.claude/skills/promptize/
+cp promptize/SKILL.md ~/.claude/skills/promptize/   # Claude Code standalone → /promptize
 ```
-
-Drop `SKILL.md` into your client's skills directory (shown for Claude Code; on Cursor, Copilot, Gemini CLI… use their convention). On Claude Code standalone it's invoked as `/promptize`. The prompt it produces is plain Markdown and works in any LLM.
 
 ## Usage
 

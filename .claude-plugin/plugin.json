@@ -1,0 +1,12 @@
+{
+  "name": "promptize",
+  "description": "Confidence-gated intent builder — turn a vague ask into a structured, reviewable prompt before anything runs.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Carlos A. García Cerdán"
+  },
+  "homepage": "https://netcopilot.io/lab/promptize/",
+  "repository": "https://github.com/netcopilot-labs/promptize",
+  "license": "MIT",
+  "keywords": ["prompt-engineering", "agent-skills", "claude-code", "ai-agents", "intent", "spec-driven-development"]
+}

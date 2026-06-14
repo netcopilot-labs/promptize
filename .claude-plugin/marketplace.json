@@ -1,0 +1,22 @@
+{
+  "name": "netcopilot-labs",
+  "owner": {
+    "name": "Carlos A. García Cerdán",
+    "email": "cg@netcopilot.io"
+  },
+  "metadata": {
+    "description": "Open tools from NetCopilot Labs — verify the intent and the truth before AI acts."
+  },
+  "plugins": [
+    {
+      "name": "promptize",
+      "source": {
+        "source": "github",
+        "repo": "netcopilot-labs/promptize"
+      },
+      "description": "Confidence-gated intent builder — turn a vague ask into a structured, reviewable prompt before anything runs.",
+      "category": "productivity",
+      "keywords": ["prompt-engineering", "agent-skills", "intent"]
+    }
+  ]
+}

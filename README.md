@@ -95,24 +95,37 @@ Promptize isn't a one-shot. Each prompt you approve is saved to a versioned libr
 
 ## Install
 
-Promptize is an [Agent Skill](https://agentskills.io) — a single `SKILL.md` (plus its docs) in the open Agent Skills format. It isn't tied to one tool: any host that supports the standard can run it, and the prompt it produces works in any LLM regardless of host.
+Promptize is an [Agent Skill](https://agentskills.io) — a `SKILL.md` in the open Agent Skills format. Two layers, two ways in:
 
-**Today's host is Claude Code.** Drop the folder into your skills directory:
+- **The skill is portable.** It runs in any Agent Skills-compatible client (Claude Code, Cursor, Copilot, Gemini CLI, …), and the prompt it produces is plain Markdown that works in any LLM.
+- **On Claude Code it also ships as a plugin** — one-step install with auto-updates, via the `netcopilot-labs` marketplace.
+
+**Claude Code — via the marketplace (recommended):**
+
+```bash
+/plugin marketplace add netcopilot-labs/promptize
+/plugin install promptize@netcopilot-labs
+```
+
+Then invoke it as `/promptize:promptize`. (Plugin skills are always namespaced — that's why it's `promptize:promptize`, not `/promptize`.)
+
+**Any Agent Skills client, or Claude Code standalone — copy the skill:**
 
 ```bash
 git clone https://github.com/netcopilot-labs/promptize.git
-cp -r promptize ~/.claude/skills/promptize
+mkdir -p ~/.claude/skills/promptize
+cp promptize/SKILL.md ~/.claude/skills/promptize/   # Claude Code standalone → /promptize
 ```
 
-It's then available in every project, invoked explicitly — it never activates on its own.
-
-As more tools adopt the Agent Skills standard, the same folder installs there the same way — point it at that host's skills directory.
+Drop `SKILL.md` into your client's skills directory (use that client's convention elsewhere). It's invoked explicitly and never activates on its own.
 
 ## Usage
 
 ```
-/promptize audit my network device configs for security risks
+/promptize write a script to delete old logs
 ```
+
+*(Installed as a plugin, the command is `/promptize:promptize`.)*
 
 Promptize will:
 
@@ -123,7 +136,7 @@ Promptize will:
 
 ## How it works
 
-For the full flow, the diagrams, and the mode-aware fork-handling behaviour, see **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+For the full flow, the diagram, execution modes, and the mode-aware fork-handling behaviour, see the **[architecture write-up at netcopilot.io](https://netcopilot.io/lab/promptize/)**.
 
 ## License
 

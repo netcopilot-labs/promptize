@@ -1,6 +1,6 @@
 # Promptize
 
-> A confidence-gated intent builder for Claude Code — clarify and confirm *what you want* before an agent acts on it.
+> A confidence-gated intent builder, packaged as an Agent Skill — clarify and confirm *what you want* before an agent acts on it.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Agent Skills compatible](https://img.shields.io/badge/Agent%20Skills-compatible-blue)](https://agentskills.io)
 
@@ -85,14 +85,18 @@ A subagent runs blind — no conversation, can't ask you mid-task — so Prompti
 
 ## Install
 
-Promptize is a **user-level Claude Code skill**. Copy the folder into your skills directory:
+Promptize is an [Agent Skill](https://agentskills.io) — a single `SKILL.md` (plus its docs) in the open Agent Skills format. It isn't tied to one tool: any host that supports the standard can run it, and the prompt it produces works in any LLM regardless of host.
+
+**Today's host is Claude Code.** Drop the folder into your skills directory:
 
 ```bash
-git clone https://github.com/<you>/promptize.git
+git clone https://github.com/netcopilot-labs/promptize.git
 cp -r promptize ~/.claude/skills/promptize
 ```
 
-(or just place `SKILL.md` at `~/.claude/skills/promptize/SKILL.md`). It is then available in every project, invoked explicitly — it never activates on its own.
+It's then available in every project, invoked explicitly — it never activates on its own.
+
+As more tools adopt the Agent Skills standard, the same folder installs there the same way — point it at that host's skills directory.
 
 ## Usage
 

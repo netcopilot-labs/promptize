@@ -4,6 +4,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Agent Skills compatible](https://img.shields.io/badge/Agent%20Skills-compatible-blue)](https://agentskills.io)
 
+![Promptize turning a vague "delete old logs" ask into a precise, dry-run-first prompt](assets/demo.gif)
+
 ## Why
 
 As we hand more work to autonomous agentic loops, the bottleneck moves from *execution* to *intent*. A loop that runs on a misunderstood premise doesn't make one mistake — it amplifies that mistake across every step it takes.
@@ -49,36 +51,34 @@ The prompt it produces is plain Markdown — **not tied to Claude.** Paste it in
 **You type:**
 
 ```
-/promptize audit my network device configs for security risks
+/promptize write a script to delete old logs
 ```
 
-**Promptize clarifies** — a couple of targeted questions (*which devices, and running- or startup-configs? what counts as a "risk" — telnet, weak SNMP, default creds? read-only audit or also remediate? where do findings go?*) — until it is ~95% sure it has your intent, then **produces a prompt you approve:**
+**Promptize clarifies** — because "delete old logs" is dangerously underspecified. A few quick rounds (*which logs, and where? what counts as "old"? dry-run or really delete? recurse where — and what must it never touch? what if it's run without sudo?*) take it from ~15% confidence to ~96%, then it **produces a prompt you approve:**
 
 ```markdown
 ## Goal
-Audit the network device configs for security risks.
-
-## Inputs
-- ./configs/*.cfg   (Cisco IOS running-configs)
-
-## Expected output
-A findings table in chat: device · risky line · severity · why.
+Write a Bash script at `~/bin/clean-old-logs.sh` that removes rotated log
+archives under `/var/log` older than 14 days.
 
 ## Scope
-IN: telnet/HTTP enabled, weak SNMP communities, default/shared creds, missing AAA, over-broad ACLs.
-OUT: routing design, performance tuning.
+IN: recursive scan of `/var/log/**`, excluding `journal`, `audit`, `installer`.
+OUT: active `*.log` files (only rotated archives); anything outside `/var/log`.
 
 ## Constraints
-Read-only — flag risks, never modify a config or push changes.
+Dry-run by default (list `<path> <size> <mtime>` + a summary); only `--apply`
+deletes. Never `rm -rf` a directory. If the first dry-run would match >5 GB,
+stop and surface it instead of proceeding.
 
 ## Success criteria
-Every flagged risk cites device + line + the rule it violates.
+No flags → prints candidates, deletes nothing. `--apply` → deletes and appends
+an audit record. The excluded dirs are never traversed.
 
 ## Open assumptions
-Assuming these are IOS running-configs; if any are NX-OS / Junos, ask before applying IOS-specific checks.
+Pure delete, not compress-then-delete. If that's wrong, ask before applying.
 ```
 
-Then it executes the approved prompt (in-session by default). The number doesn't end up in the prompt — it's the *assumptions* that travel, because those are what an executor can act on.
+A vague, risky one-liner became a precise, reviewable, **dry-run-first** plan — *before* a single file was touched. That's the whole point.
 
 ## Two ways to run it
 

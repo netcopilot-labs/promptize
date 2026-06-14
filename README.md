@@ -123,7 +123,7 @@ Promptize will:
 3. assemble the structured prompt for your approval,
 4. execute it in your chosen mode, saving the prompt to your library.
 
-## How it works
+## Architecture
 
 For the full flow, the diagram, execution modes, and the mode-aware fork-handling behaviour, see the **[architecture write-up at netcopilot.io](https://netcopilot.io/lab/promptize/)**.
 

@@ -25,12 +25,6 @@ The result is **governed autonomy**: the run completes, but it leaves an audit t
 
 The implementation here is a Claude Code skill — but the pattern, *gate intent before execution*, is ecosystem-agnostic.
 
-## Relation to spec-driven development
-
-Promptize shares the instinct behind **spec-driven development (SDD)** — the shift that treats *intent* as the source of truth and the output (code, a config, an answer) as something that flows from it, not the other way around. It just works at a smaller altitude: not a whole project's spec → plan → tasks, but a **single task's intent, clarified before one run**.
-
-It also leans into the sharpest critique of SDD-in-practice — that people often spec the *solution* they already pictured, not the *problem* it has to solve. Promptize gates the intent first: it clarifies what you actually want **before** any structured artifact — a prompt, or a spec — flows from it. Think of it as lightweight, and upstream of any spec.
-
 ## What it does
 
 You give Promptize a rough, ambiguous ask. Before anything runs, it turns that into a structured, reviewable prompt — and only then executes it (and saves it for reuse).

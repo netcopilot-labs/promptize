@@ -104,8 +104,7 @@ Invoke as `/promptize:promptize`.
 
 ```bash
 git clone https://github.com/netcopilot-labs/promptize.git
-mkdir -p ~/.claude/skills/promptize
-cp promptize/SKILL.md ~/.claude/skills/promptize/   # Claude Code standalone → /promptize
+cp -r promptize/skills/promptize ~/.claude/skills/   # Claude Code standalone → /promptize
 ```
 
 ## Usage

@@ -91,14 +91,14 @@ Promptize isn't a one-shot. Each prompt you approve is saved to a versioned libr
 
 **Pick one — you don't need both.**
 
-**A · Claude Code** *(recommended)* — via the marketplace:
+**A · Claude Code & Claude Cowork** *(recommended)* — via the `netcopilot-labs` marketplace:
 
 ```bash
 /plugin marketplace add netcopilot-labs/promptize
 /plugin install promptize@netcopilot-labs
 ```
 
-Invoke as `/promptize:promptize`.
+Invoke as `/promptize:promptize`. (In **Cowork**, add the same marketplace from *Customize → Plugins → Add marketplace*, then install.)
 
 **B · Any other Agent Skills client** — copy the skill into its skills directory:
 
